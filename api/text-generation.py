@@ -7,11 +7,11 @@ import os
 # Initialize FastAPI app
 app = FastAPI()
 
-# Load the model, feature extractor, and tokenizer
-model_path = "./speech_to_text/"  # Update this path if needed
-model = AutoModelForSpeechSeq2Seq.from_pretrained(model_path)
-feature_extractor = AutoFeatureExtractor.from_pretrained(model_path)
-tokenizer = AutoTokenizer.from_pretrained(model_path)
+# Load the model, feature extractor, and tokenizer from Hugging Face Hub
+model_name = "openai/whisper-small"  # Replace with your desired model
+model = AutoModelForSpeechSeq2Seq.from_pretrained(model_name)
+feature_extractor = AutoFeatureExtractor.from_pretrained(model_name)
+tokenizer = AutoTokenizer.from_pretrained(model_name)
 
 def transcribe_audio(audio_path, language="en"):
     """
